@@ -23,27 +23,32 @@ public class SphereControl : MonoBehaviour
             transform.position -= (new Vector3(0, 1, 0)) * Time.deltaTime;
         }
 
-        if (Input.GetKey (KeyCode.LeftArrow))
+        if (Input.GetKey (KeyCode.A))
         {
             transform.position -= transform.right * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.position += transform.right * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.Period))
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position -= transform.forward * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.S))
         {
             transform.position += transform.forward * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.Q))
         {
             transform.Rotate(Vector3.up, 180 * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.E))
         {
             transform.Rotate(Vector3.down, 180 * Time.deltaTime);
         }
