@@ -25,22 +25,22 @@ public class SphereControl : MonoBehaviour
 
         if (Input.GetKey (KeyCode.A))
         {
-            transform.position -= transform.right * Time.deltaTime;
+            transform.position -= transform.right * (50 * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += transform.right * Time.deltaTime;
+            transform.position += transform.right * (50 * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position -= transform.forward * Time.deltaTime;
+            transform.position -= transform.forward * (50 * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position += transform.forward * (50 * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.Q))
