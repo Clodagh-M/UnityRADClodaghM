@@ -10,7 +10,7 @@ public class snakeControlScript : MonoBehaviour
     enum SnakeState { Idle, Attack, Follow }
     SnakeState currentlyIs = SnakeState.Idle;
     private float aggroRadius = 10;
-    private float walkingSpeed = 10;
+    private float walkingSpeed = 1f;
     private float meleeDistance = 1;
 
     // Start is called before the first frame update
@@ -37,20 +37,23 @@ public class snakeControlScript : MonoBehaviour
 
 
                 case SnakeState.Attack:
-
-
+                
                 break;
 
                 case SnakeState.Follow:
-                    transform.LookAt(player.transform.position);
+                    Vector3 target = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+                    transform.LookAt(target);
                     transform.position += transform.forward * walkingSpeed * Time.deltaTime;
 
                 if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
                 {
                     currentlyIs = SnakeState.Attack;
+                    snakeAnimator.SetBool("isAttacking", true);
                 }
                     break;
 
+                }
+
         }
+
     }
-}
