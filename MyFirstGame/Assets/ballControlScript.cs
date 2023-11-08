@@ -15,9 +15,23 @@ public class ballControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            rb.AddForce(kickStrength * Vector3.up, ForceMode.Impulse);
+       
+       
+    }
+
+    void KickBall(Transform kicker)
+    {
+        rb.AddForce(kickStrength * kicker.forward, ForceMode.Impulse);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Plane") {
+        print("Boing"); }
+        else { 
+            print("Ouch");
+            KickBall(collision.transform);
         }
     }
 }
+    
