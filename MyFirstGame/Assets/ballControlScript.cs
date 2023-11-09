@@ -19,8 +19,9 @@ public class ballControlScript : MonoBehaviour
        
     }
 
-    void KickBall(Transform kicker)
+    public void KickBall(Transform kicker)
     {
+        rb.AddExplosionForce(kickStrength, kicker.position, 4);
         rb.AddForce(kickStrength * kicker.forward, ForceMode.Impulse);
     }
 
@@ -28,8 +29,16 @@ public class ballControlScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Plane") {
         print("Boing"); }
-        else { 
+        else 
+        { 
+            snakeControlScript testIfSnake = collision.gameObject.GetComponent<snakeControlScript>();
+            if (testIfSnake != null)
+            {
+                testIfSnake.dieNow();
+
+            }
             print("Ouch");
+
             KickBall(collision.transform);
         }
     }
