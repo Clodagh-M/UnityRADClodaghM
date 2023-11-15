@@ -5,9 +5,9 @@ using UnityEngine;
 public class ballControlScript : MonoBehaviour
 {   
     Rigidbody rb;
-    float kickStrength = 10;
+    float kickStrength = 800;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -22,13 +22,14 @@ public class ballControlScript : MonoBehaviour
     public void KickBall(Transform kicker)
     {
         rb.AddExplosionForce(kickStrength, kicker.position, 4);
-        rb.AddForce(kickStrength * kicker.forward, ForceMode.Impulse);
+      //  rb.AddForce(kickStrength * kicker.forward, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Plane") {
-        print("Boing"); }
+        print("Boing"); 
+        }
         else 
         { 
             snakeControlScript testIfSnake = collision.gameObject.GetComponent<snakeControlScript>();

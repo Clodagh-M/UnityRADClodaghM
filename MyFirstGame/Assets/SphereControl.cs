@@ -16,7 +16,7 @@ public class SphereControl : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.position -= transform.forward * (2 * Time.deltaTime);
+            transform.position += transform.forward * (2 * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.A))
             transform.Rotate(Vector3.up, 180 * Time.deltaTime);
@@ -32,7 +32,7 @@ public class SphereControl : MonoBehaviour
             ballControlScript myNewBallScript = 
                 newBall.GetComponent<ballControlScript>();
 
-            myNewBallScript.KickBall(transform);
+           myNewBallScript.KickBall(transform);
         }
 
     }
