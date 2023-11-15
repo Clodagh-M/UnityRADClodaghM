@@ -26,7 +26,6 @@ public class snakeControlScript : MonoBehaviour
     {
         switch (currentlyIs)
         {
-
             case SnakeState.Idle:
 
                 if (Vector3.Distance(player.transform.position, transform.position) < aggroRadius)
@@ -62,6 +61,8 @@ public class snakeControlScript : MonoBehaviour
                     break;
 
             case SnakeState.Dying:
+
+                break;
                 
         }
             
@@ -71,8 +72,8 @@ public class snakeControlScript : MonoBehaviour
 
     internal void dieNow()
     {
-        snakeAnimator.SetBool("isDying", true );
-        Destroy(gameObject);
+        snakeAnimator.SetBool("isDying", true);
+        Destroy(gameObject,5);
         currentlyIs = SnakeState.Dying;
     }
 }
