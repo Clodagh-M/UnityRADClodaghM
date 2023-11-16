@@ -12,7 +12,7 @@ public class snakeControlScript : MonoBehaviour
     SnakeState currentlyIs = SnakeState.Idle;
     private float aggroRadius = 10;
     private float walkingSpeed = 1;
-    private float meleeDistance = 1;
+    private float meleeDistance = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -33,17 +33,23 @@ public class snakeControlScript : MonoBehaviour
                     currentlyIs = SnakeState.Follow;
                     snakeAnimator.SetBool("isWalking", true);
                 }
+
+                if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
+                {
+                    currentlyIs = SnakeState.Attack;
+                }
+                
                 break; 
 
 
             case SnakeState.Attack:
 
-                if (Vector3.Distance(player.transform.position, transform.position) > 2 * meleeDistance)
-                {
-                    currentlyIs = SnakeState.Follow;
-                    snakeAnimator.SetBool("isAttacking", false);
-                    snakeAnimator.SetBool((int)SnakeState.Follow, true);
-                }
+                //if (Vector3.Distance(player.transform.position, transform.position) > 2 * meleeDistance)
+                //{
+                    //currentlyIs = SnakeState.Follow;
+                    //snakeAnimator.SetBool("isAttacking", true);
+                    //snakeAnimator.SetBool((int)SnakeState.Follow, true);
+                //}
 
 
                 break;
@@ -73,7 +79,7 @@ public class snakeControlScript : MonoBehaviour
     internal void dieNow()
     {
         snakeAnimator.SetBool("isDying", true);
-        Destroy(gameObject,5);
+        Destroy(gameObject,3);
         currentlyIs = SnakeState.Dying;
     }
 }

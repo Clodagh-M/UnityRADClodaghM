@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SphereControl : MonoBehaviour
@@ -9,7 +10,7 @@ public class SphereControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,13 +19,16 @@ public class SphereControl : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
             transform.position += transform.forward * (2 * Time.deltaTime);
 
+        if (Input.GetKey(KeyCode.S))
+            transform.position -= transform.forward * (2 * Time.deltaTime);
+
         if (Input.GetKey(KeyCode.A))
             transform.Rotate(Vector3.up, 180 * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.D))
             transform.Rotate(Vector3.down, 180 * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             Transform newBall = Instantiate(footballCloneTemplate, 
                 transform.position + 2 * transform.forward,
