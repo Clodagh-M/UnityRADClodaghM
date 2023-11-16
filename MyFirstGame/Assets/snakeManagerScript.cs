@@ -6,11 +6,11 @@ public class snakeManagerScript : MonoBehaviour
 {
     public Transform snakeCloneTemplate;
 
-    int numberOfZombies = 300;
+    int numberOfSnakes= 150;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < numberOfZombies; i++)
+        for (int i = 0; i < numberOfSnakes; i++)
         {
             Vector3 position = new Vector3(
                 Random.Range(60.1f, -58.5f),
